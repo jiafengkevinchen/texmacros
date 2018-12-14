@@ -12,6 +12,7 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{booktabs}
 \RequirePackage{natbib}
+\RequirePackage{bbm}
 
 \RequirePackage{fancyhdr}
 
@@ -167,9 +168,12 @@
 \renewcommand{\Im}{\operatorname{Im}}
 \newcommand{\abs}[1]{\left| #1 \right|}
 \newcommand{\ip}[1]{\langle #1 \rangle}
+\newcommand{\thinhat}{\hat}
 \renewcommand{\hat}{\widehat}
 \renewcommand{\bar}{\overline}
 \newcommand{\tr}{\operatorname{tr}} % trace
+
+\newcommand{\nrm}[2]{#1\lVert{#2}#1\rVert}
 
 \newcommand{\bhat}[1]{\hat {\bm {#1}}}
 \newcommand{\btilde}[1]{\tilde {\bm {#1}}}
@@ -177,9 +181,11 @@
 
 \newcommand{\T}{\mathcal T}
 \newcommand{\uppr}[1]{^{(#1)}}
+\newcommand{\one}{\mathbbm{1}}
 
 \newcommand{\TODO}[1]{
 {\color{red}\textbf{[TODO: #1]}}}
+
 
 
 \DeclareMathOperator*{\argmin}{arg\,min}

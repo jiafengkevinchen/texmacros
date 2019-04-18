@@ -19,3 +19,5 @@ function newdocument() {
 
 alias newdoc="newdocument"
 ```
+
+Usage: `$ gettexmacros` or `newdoc [filename]` (default is `main.tex`)

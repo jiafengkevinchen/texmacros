@@ -9,12 +9,12 @@ function newdocument() {
     local filename=${1:-main};
     curl -L "https://raw.githubusercontent.com/jiafengkevinchen/texmacros/master/macros.sty" > macros.sty;
 
-    echo '\documentclass[12pt]{article}
-\usepackage{macros}
+    echo "\\\documentclass[12pt]{article}
+\\\usepackage{macros}
 
-\begin{document}
+\\\begin{document}
 
-\end{document}' > $filename.tex; subl $filename.tex;
+\\\end{document}" > $filename.tex; subl $filename.tex;
 }
 
 alias newdoc="newdocument"

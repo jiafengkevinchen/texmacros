@@ -11,12 +11,12 @@ function newdocument() {
 
     echo '% arara: indent: {overwrite: yes, modifylinebreaks: yes, settings: local, where: localSettings.yaml}
 % arara: pdflatex
-\documentclass[12pt]{article}
-\usepackage{macros}
+\\\documentclass[12pt]{article}
+\\\usepackage{macros}
 
-\begin{document}
+\\\begin{document}
 
-\end{document}' > $filename.tex; subl $filename.tex;
+\\\end{document}" > $filename.tex; subl $filename.tex;
 }
 
 alias newdoc="newdocument"

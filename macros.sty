@@ -98,8 +98,8 @@
 
 % Statistics
 \newcommand{\E}{\mathbb{E}}
-\newcommand{\var}{\mathbb{V}}
-\renewcommand{\P}{\mathbb{P}}
+\newcommand{\var}{\operatorname{Var}}
+\renewcommand{\P}{\operatorname{Pr}}
 \newcommand{\cov}{\operatorname{Cov}}
 \newcommand{\corr}{\operatorname{Corr}}
 \newcommand{\Bern}{\operatorname{Bern}}
@@ -122,8 +122,15 @@
 \newcommand{\supp}{\operatorname{supp}}
 \newcommand{\pto}{\overset{p}{\longrightarrow}}
 \newcommand{\dto}{\overset{d}{\longrightarrow}}
-\newcommand{\asto}{\overset{a.s.}{\longrightarrow}}
+\newcommand{\wto}{\leadsto}
+\newcommand{\asto}{\overset{\mathrm{a.s.}}{\longrightarrow}}
 \newcommand{\iid}{\overset{\mathrm{i.i.d.}}{\sim}}
+\newcommand{\maxwith}{\vee}
+\newcommand{\minwith}{\wedge}
+\renewcommand{\H}{\mathcal H}
+\newcommand{\evalbar}{\bigg \rvert}
+\newcommand{\Pn}[1][n]{\mathbb{P}_{#1}}
+\newcommand{\Gn}[1][n]{\mathbb{G}_{#1}}
 
 \DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
 \DeclareMathSymbol{\indep}{\mathrel}{symbolsC}{121}

@@ -14,6 +14,7 @@
 \RequirePackage{natbib}
 \RequirePackage{bbm}
 \RequirePackage{etoolbox}
+\RequirePackage{mathtools}
 
 \RequirePackage{fancyhdr}
 
@@ -178,7 +179,12 @@
         \fi
 }
 
-\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\let\norm\undefined % <-- "Undefine" \norm
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+\let\abs\undefined % <-- "Undefine" \norm
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
 \newcommand{\inprod}[1]{\left\langle {#1} \right \rangle}
 \newcommand{\Span}{\operatorname{span}}
 \newcommand{\im}{\operatorname{im}}
@@ -194,10 +200,9 @@
 \newcommand{\br}[1]{\left\{{#1}\right\}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
-\newcommand{\abs}[1]{\left| #1 \right|}
 \newcommand{\ip}[1]{\langle #1 \rangle}
-\newcommand{\thinhat}{\hat}
-\renewcommand{\hat}{\widehat}
+% \newcommand{\thinhat}{\hat}
+% \renewcommand{\hat}{\widehat}
 \renewcommand{\bar}{\overline}
 \newcommand{\tr}{\operatorname{tr}} % trace
 

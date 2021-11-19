@@ -11,10 +11,13 @@
 \RequirePackage{algpseudocode,algorithm,algorithmicx}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{booktabs}
-\RequirePackage{natbib}
+\RequirePackage[longnamesfirst]{natbib}
 \RequirePackage{bbm}
 \RequirePackage{etoolbox}
 \RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage[most,breakable]{tcolorbox}
+
 
 \RequirePackage{fancyhdr}
 
@@ -39,57 +42,90 @@
 \makeatother
 
 
+\newtheoremstyle{theorem} % name
+    {3pt}                    % Space above
+    {3pt}                    % Space below
+    {\slshape}                   % Body font
+    {}                           % Indent amount
+    {\bfseries}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\newtheoremstyle{example} % name
+    {3pt}                    % Space above
+    {3pt}                    % Space below
+    {}                   % Body font
+    {}                           % Indent amount
+    {\bfseries}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+
+
 \definecolor{gq}{HTML}{1F4788}
+
 \DeclareOption{thm}{
-    \theoremstyle{definition}
+    \theoremstyle{theorem}
     \newtheorem{theorem}{Theorem}
     \newtheorem{prop}[theorem]{Proposition}
-    \newtheorem{defn}[theorem]{Definition}
     \newtheorem{lemma}[theorem]{Lemma}
     \newtheorem{cor}[theorem]{Corollary}
-    \newtheorem{ex}[theorem]{Example}
+    \newtheorem{as}{Assumption}
     \newtheorem{fact}[theorem]{Fact}
     \newtheorem{conj}[theorem]{Conjecture}
+
+    \theoremstyle{definition}
+    \newtheorem{defn}[theorem]{Definition}
+
+    \theoremstyle{example}
+    \newtheorem{ex}[theorem]{Example}
+    \newtheorem{rmk}[theorem]{Remark}
 }
 
 \DeclareOption{thm_section}{
-    \theoremstyle{definition}
+    \theoremstyle{theorem}
     \newtheorem{theorem}{Theorem}[section]
     \newtheorem{prop}[theorem]{Proposition}
-    \newtheorem{defn}[theorem]{Definition}
     \newtheorem{lemma}[theorem]{Lemma}
     \newtheorem{cor}[theorem]{Corollary}
-    \newtheorem{ex}[theorem]{Example}
+    \newtheorem{as}{Assumption}[section]
+
     \newtheorem{fact}[theorem]{Fact}
+    \newtheorem{conj}[theorem]{Conjecture}
+
+    \theoremstyle{definition}
+    \newtheorem{defn}[theorem]{Definition}
+
+    \theoremstyle{example}
+    \newtheorem{ex}[theorem]{Example}
+    \newtheorem{rmk}[theorem]{Remark}
 }
 
 \DeclareOption{thm*}{
-    \theoremstyle{definition}
+    \theoremstyle{theorem}
     \newtheorem*{theorem}{Theorem}
     \newtheorem*{prop}{Proposition}
-    \newtheorem*{defn}{Definition}
     \newtheorem*{lemma}{Lemma}
     \newtheorem*{cor}{Corollary}
-    \newtheorem*{ex}{Example}
+    \newtheorem*{as}{Assumption}
     \newtheorem*{fact}{Fact}
+    \newtheorem*{conj}{Conjecture}
+
+    \theoremstyle{definition}
+    \newtheorem*{defn}{Definition}
+
+    \theoremstyle{example}
+    \newtheorem*{ex}{Example}
+    \newtheorem*{rmk}{Remark}
 }
 
 
-
-\theoremstyle{remark}
-\newtheorem*{rmk}{Remark}
-
-\theoremstyle{definition}
-\newtheorem*{theorem*}{Theorem}
-\newtheorem*{prop*}{Proposition}
-\newtheorem*{defn*}{Definition}
-\newtheorem*{lemma*}{Lemma}
-\newtheorem*{cor*}{Corollary}
-\newtheorem*{ex*}{Example}
-\newtheorem*{fact*}{Fact}
-
 \ProcessOptions
 \ExecuteOptions{}
+
+\crefname{as}{Assumption}{Assumptions}
+
 
 \onehalfspacing
 
@@ -100,7 +136,7 @@
 % Statistics
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\var}{\operatorname{Var}}
-\renewcommand{\P}{\operatorname{Pr}}
+\renewcommand{\P}{\operatorname{P}}
 \newcommand{\cov}{\operatorname{Cov}}
 \newcommand{\corr}{\operatorname{Corr}}
 \newcommand{\Bern}{\operatorname{Bern}}
@@ -223,6 +259,10 @@
 \newcommand{\nd}{\textsuperscript{nd}}
 \newcommand{\st}{\textsuperscript{st}}
 
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+
+
 
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max} % thin space, limits underneath in displays
@@ -254,6 +294,51 @@
 }
 
 \newcommand{\paragraphdot}[1]{\paragraph{{#1.}}}
+
+\allowdisplaybreaks
+
+
+
+\tcbset{
+    frame code={}
+    center title,
+    breakable,
+    left=1em,
+    right=1em,
+    top=0pt,
+    bottom=0pt,
+    colback=gray!5,
+    colframe=white,
+    width=\dimexpr\textwidth\relax,
+    fontupper=\footnotesize,
+    enlarge left by=0mm,
+    boxsep=5pt,
+    arc=0pt,outer arc=0pt,
+}
+
+
+\newenvironment{tcbproof}{
+    \begin{tcolorbox}
+    \begin{proof}
+}{
+    \qedhere
+    \end{proof}
+    \end{tcolorbox}
+}
+
+\newenvironment{rmksq}{
+    \begin{rmk}
+}{
+    \hfill$\blacksquare$
+    \end{rmk}
+}
+
+\newenvironment{exsq}{
+    \begin{ex}
+}{
+    \hfill$\blacksquare$
+    \end{ex}
+}
 
 
 \endinput

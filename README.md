@@ -14,6 +14,8 @@ function newdocument() {
     echo "\\\documentclass[10pt, reqno]{amsart}
 \\\usepackage{macros}
 
+\\raggedbottom
+
 \\\begin{document}
 
 \\\bibliographystyle{ecca}

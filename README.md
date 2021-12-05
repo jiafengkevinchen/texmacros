@@ -14,7 +14,7 @@ function newdocument() {
     echo "\\\documentclass[10pt, reqno]{amsart}
 \\\usepackage{macros}
 
-\\raggedbottom
+\\\raggedbottom
 
 \\\begin{document}
 

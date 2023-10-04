@@ -24,6 +24,16 @@
 \RequirePackage[capitalise, nameinlink, noabbrev]{cleveref}
 \RequirePackage{setspace}
 
+\RequirePackage{thm-restate}
+\RequirePackage{pdflscape}
+\RequirePackage{afterpage}
+\RequirePackage{tabularx}
+\RequirePackage{bold-extra}
+\RequirePackage{pifont}
+\RequirePackage{titletoc}
+\RequirePackage{chngcntr}
+\RequirePackage{etoolbox}
+
 \makeatletter
 
 % make numeric styles use name format
@@ -339,6 +349,20 @@
     \hfill$\blacksquare$
     \end{ex}
 }
+
+
+
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\hypersetup{final}
+\crefname{enumi}{}{}
+
+
+\makeatletter
+\patchcmd{\@settitle}{\uppercasenonmath\@title}{\large}{}{}
+\patchcmd{\@setauthors}{\MakeUppercase}{\vspace{-1em}\normalsize}{}{}
+\patchcmd{\section}{\scshape}{\bfseries}{}{}
+\makeatother
 
 
 \endinput
